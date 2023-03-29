@@ -4,6 +4,7 @@ import { PizzasModule } from './modules/pizzas/pizzas.module';
 
 @Module({
   imports: [
+    // Get from env
     MongooseModule.forRoot('mongodb://localhost/appizza'),
     PizzasModule,
   ],

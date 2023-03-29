@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { PizzasService } from '../../services/pizzas.service';
 import { AsyncPipe, NgForOf } from '@angular/common';
 import { PizzaComponent } from '../../components/pizza/pizza.component';
@@ -9,6 +9,7 @@ import { PizzaComponent } from '../../components/pizza/pizza.component';
   templateUrl: './pizzas.component.html',
   styleUrls: ['./pizzas.component.scss'],
   imports: [AsyncPipe, NgForOf, PizzaComponent],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PizzasComponent {
   private pizzasService = inject(PizzasService);

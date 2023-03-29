@@ -30,10 +30,4 @@ describe(PizzaComponent.name, () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  for (let i = 1; i < 1234; i++) {
-    it(`should calculate price for ${i} pizzas`, () => {
-      expect(component.calculatePrice('30cm', i)).toBe(i * 10);
-    });
-  }
 });

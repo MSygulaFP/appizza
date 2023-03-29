@@ -13,12 +13,4 @@ import { UiButtonComponent } from '@appizza/ui/button';
 })
 export class PizzaComponent {
   @Input() pizza!: Pizza;
-
-  calculatePrice(size: string, amount: number): number {
-    if (!this.pizza) return 0;
-
-    const price = this.pizza.prices.find((p) => p.size === size)?.price ?? 0;
-
-    return price * amount;
-  }
 }

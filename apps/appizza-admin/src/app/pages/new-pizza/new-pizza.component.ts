@@ -1,8 +1,8 @@
-import { Component, inject } from '@angular/core';
-import { PizzaFormComponent } from '../../components/pizza-form/pizza-form.component';
-import { Pizza } from '@appizza/interfaces';
-import { PizzasService } from '../../services/pizzas.service';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { Pizza } from '@appizza/interfaces';
+import { PizzaFormComponent } from '../../components/pizza-form/pizza-form.component';
+import { PizzasService } from '../../services/pizzas.service';
 
 @Component({
   selector: 'appizza-new-pizza',
@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./new-pizza.component.scss'],
   standalone: true,
   imports: [PizzaFormComponent],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NewPizzaComponent {
   private router = inject(Router);

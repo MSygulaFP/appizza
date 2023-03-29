@@ -1,4 +1,6 @@
 import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   inject,
@@ -18,8 +20,10 @@ import { UiButtonComponent } from '@appizza/ui/button';
   styleUrls: ['./pizza-list.component.scss'],
   imports: [NgFor, AsyncPipe, RouterLink, UiButtonComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PizzaListComponent implements OnInit {
+  private cdr = inject(ChangeDetectorRef);
   private pizzasService$ = inject(PizzasService);
 
   pizzas$!: Observable<Pizza[]>;
@@ -33,6 +37,9 @@ export class PizzaListComponent implements OnInit {
   }
 
   private getPizzas() {
+    // Don't do that
     this.pizzas$ = this.pizzasService$.getPizzas();
+
+    this.cdr.markForCheck();
   }
 }
