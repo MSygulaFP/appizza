@@ -1,0 +1,9 @@
+button {
+  &[data-color='primary'] {
+    @apply bg-[#FF9119] hover:bg-[#FF9119]/80 focus:ring-[#FF9119];
+  }
+
+  &[data-color='warn'] {
+    @apply bg-[#ef4444] hover:bg-[#ef4444]/80 focus:ring-[#ef4444];
+  }
+}

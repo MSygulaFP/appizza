@@ -1,0 +1,79 @@
+{
+  "name": "appizza-login",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/appizza-login/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/vite:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/appizza-login",
+        "assets": [
+          {
+            "input": "libs/shared/assets",
+            "glob": "**/*",
+            "output": "assets/"
+          }
+        ]
+      },
+      "configurations": {
+        "development": {
+          "mode": "development"
+        },
+        "production": {
+          "mode": "production"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/vite:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "appizza-login:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "appizza-login:build:development",
+          "hmr": true
+        },
+        "production": {
+          "buildTarget": "appizza-login:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "preview": {
+      "executor": "@nrwl/vite:preview-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "appizza-login:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "appizza-login:build:development"
+        },
+        "production": {
+          "buildTarget": "appizza-login:build:production"
+        }
+      }
+    },
+    "test": {
+      "executor": "@nrwl/vite:test",
+      "outputs": ["coverage/apps/appizza-login"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../coverage/apps/appizza-login"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/appizza-login/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  },
+  "tags": ["type:app", "framework:react"]
+}

@@ -1,0 +1,4 @@
+<appizza-pizza-form
+  [pizza]="pizza$ | async"
+  (savePizza)="updatePizza($event)"
+/>

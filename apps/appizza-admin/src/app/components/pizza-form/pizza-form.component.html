@@ -1,0 +1,70 @@
+<form
+  class="mt-5 flex flex-col gap-8"
+  [formGroup]="form"
+  (ngSubmit)="handleSubmit()"
+>
+  <div>
+    <label for="name"> Name </label>
+    <input id="name" type="text" formControlName="name" />
+  </div>
+
+  <div>
+    <label> Ingredients </label>
+
+    <div class="flex gap-3">
+      <ui-button
+        *ngFor="let ingredient of availableIngredients"
+        type="button"
+        (clicked)="addIngredient(ingredient)"
+      >
+        + {{ ingredient | titlecase }}
+      </ui-button>
+    </div>
+
+    <ol class="flex flex-col gap-5 mt-5">
+      <li
+        *ngFor="
+          let ingredient of form.controls.ingredients.value;
+          let i = index
+        "
+        class="flex items-center gap-2"
+      >
+        <ui-button color="warn" type="button" (clicked)="removeIngredient(i)">
+          -
+        </ui-button>
+
+        {{ ingredient }}
+      </li>
+    </ol>
+  </div>
+
+  <div>
+    <div class="flex justify-between items-center">
+      <label> Sizes </label>
+      <ui-button type="button" (click)="addSize()">Add new size</ui-button>
+    </div>
+
+    <ng-container formArrayName="prices">
+      <ng-container *ngFor="let price of pricesControl.controls; let i = index">
+        <div [formGroupName]="i" class="flex gap-3 my-5">
+          <ui-button color="warn" type="button" (clicked)="removePrice(i)">
+            -
+          </ui-button>
+
+          <select formControlName="size">
+            <option disabled selected value="">---</option>
+            <option *ngFor="let option of availableSizes" [value]="option">
+              {{ option }}
+            </option>
+          </select>
+
+          <input type="number" formControlName="price" />
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+
+  <div class="flex justify-end">
+    <ui-button type="submit">Save</ui-button>
+  </div>
+</form>

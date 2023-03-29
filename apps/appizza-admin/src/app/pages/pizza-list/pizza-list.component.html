@@ -1,0 +1,21 @@
+<div class="flex justify-end my-5">
+  <ui-button [routerLink]="'new'"> New </ui-button>
+</div>
+
+<div class="flex flex-col gap-5">
+  <div *ngFor="let pizza of pizzas$ | async">
+    <div
+      class="flex justify-between items-center bg-white px-5 py-2 shadow-md rounded-lg border border-slate-200"
+    >
+      <h3 class="font-medium">
+        {{ pizza.name }}
+      </h3>
+      <div class="justify-self-end flex gap-3">
+        <ui-button [routerLink]="pizza._id"> Edit </ui-button>
+        <ui-button (clicked)="deletePizza(pizza._id)" color="warn">
+          Delete
+        </ui-button>
+      </div>
+    </div>
+  </div>
+</div>

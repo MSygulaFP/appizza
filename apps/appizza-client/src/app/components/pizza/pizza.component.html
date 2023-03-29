@@ -1,0 +1,13 @@
+<div
+  class="grid grid-flow-col grid-rows-2 grid-cols-2 bg-white px-5 py-2 shadow-md rounded-lg border border-slate-200"
+>
+  <h3 class="font-medium">
+    {{ pizza.name }}
+  </h3>
+  <p class="text-sm text-slate-500">
+    {{ pizza.ingredients | arrayToString }}
+  </p>
+  <div class="row-span-2 justify-self-end self-center">
+    <ui-button> Order </ui-button>
+  </div>
+</div>

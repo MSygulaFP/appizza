@@ -1,0 +1,8 @@
+<button
+  class="text-white shadow-md focus:ring-4 focus:outline-none /50 font-medium rounded-lg text-sm px-5 py-2.5"
+  [attr.data-color]="color"
+  [type]="type"
+  (click)="handleClick($event)"
+>
+  <ng-content />
+</button>
